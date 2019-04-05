@@ -1,0 +1,33 @@
+import { OnInit } from '@angular/core';
+import Theme from './interfaces/Theme';
+export declare class NgxEmojComponent implements OnInit {
+    readonly DEFAULTS: any;
+    width: string;
+    height: string;
+    onemojipick: any;
+    onchardelete: any;
+    theme: Theme;
+    emojiCategories: any[];
+    emos: any[];
+    activeCategory: string;
+    activeEmo: string;
+    activeIndex: number;
+    activeEmojiSet: any[];
+    hideFooter: Boolean;
+    maxRecentEmoji: string;
+    recentEmojiStoreKey: string;
+    searchEmojiPlaceholderText: string;
+    emojiNotFoundText: string;
+    emojiDB: any;
+    emojiDBKey: string;
+    constructor();
+    ngOnInit(): void;
+    handleCategoryChange(e: any): void;
+    handleEmoChange(e: any): void;
+    checkIfEmojiExistsInEmojiDB(name: any): boolean;
+    addEmojiToRecentEmojiDB(emoji: string[]): void;
+    handleEmojiPick(e: any): void;
+    handleCharDelete(e: any): void;
+    handleContentScroll(e: any): void;
+    handleContentSwipe(e: any): void;
+}
