@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Component, Input, Output, EventEmitter, ViewChild, Renderer2, NgModule } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, Renderer2, NgModule } from '@angular/core';
 
 /**
  * @fileoverview added by tsickle
@@ -1970,29 +1970,50 @@ NgxEmojFooterComponent.propDecorators = {
 class NgxEmojCategoryComponent {
     /**
      * @param {?} sanitizer
+     * @param {?} cdRef
      */
-    constructor(sanitizer) {
+    constructor(sanitizer, cdRef) {
         this.sanitizer = sanitizer;
+        this.cdRef = cdRef;
         this.onselect = new EventEmitter;
     }
     /**
      * @return {?}
      */
     ngOnInit() {
-        this.safeSvgComponent = this.sanitizer.bypassSecurityTrustHtml(this.categoryIcon(((this.active) ? this.martCategoryColorActive : this.martCategoryColor), this.martCategoryFontSize, this.martCategoryFontSize));
+        this.setInnerHtml();
     }
     /**
+     * @param {?} changes
      * @return {?}
      */
-    selectCategory() {
+    ngOnChanges(changes) {
+        if (changes.active.previousValue !== changes.active.currentValue) {
+            this.setInnerHtml();
+            this.cdRef.markForCheck();
+        }
+    }
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    selectCategory($event) {
+        $event.stopPropagation();
         this.onselect.emit({ name: this.categoryName, icon: this.categoryIcon });
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    setInnerHtml() {
+        this.safeSvgComponent = this.sanitizer.bypassSecurityTrustHtml(this.categoryIcon(((this.active) ? this.martCategoryColorActive : this.martCategoryColor), this.martCategoryFontSize, this.martCategoryFontSize));
     }
 }
 NgxEmojCategoryComponent.decorators = [
     { type: Component, args: [{
                 selector: 'ngx-emoj-category',
                 template: `
-    <button (click)="selectCategory()" class="ngx-emoji-category-btn"
+    <button (click)="selectCategory($event)" class="ngx-emoji-category-btn"
     [ngStyle]="{'color': categoryIconColor,
                 'border-width': activeIndicatorHeight,
                 'border-color': (active) ? activeIndicatorColor : 'transparent'}"
@@ -2013,18 +2034,19 @@ NgxEmojCategoryComponent.decorators = [
 ];
 /** @nocollapse */
 NgxEmojCategoryComponent.ctorParameters = () => [
-    { type: DomSanitizer }
+    { type: DomSanitizer },
+    { type: ChangeDetectorRef }
 ];
 NgxEmojCategoryComponent.propDecorators = {
     categoryIcon: [{ type: Input }],
     categoryName: [{ type: Input }],
     categoryIconColor: [{ type: Input }],
-    active: [{ type: Input }],
     activeIndicatorColor: [{ type: Input }],
     activeIndicatorHeight: [{ type: Input }],
     martCategoryFontSize: [{ type: Input }],
     martCategoryColor: [{ type: Input }],
     martCategoryColorActive: [{ type: Input }],
+    active: [{ type: Input }],
     onselect: [{ type: Output }]
 };
 
@@ -2127,7 +2149,7 @@ NgxEmojCategoryContentComponent.decorators = [
                                         }">
                                         {{ emojiNotFoundText }}
                                        </div>
-  <div class="ngx-emoji-category-content" [ngStyle]="{'padding': '5px'}"
+  <div class="ngx-emoji-category-content" [ngStyle]="{'padding': '0px 5px 5px 15px'}"
                                            #emojiContainer>
 
       <div class="emoji-btn-container"

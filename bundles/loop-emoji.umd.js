@@ -1800,8 +1800,9 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var NgxEmojCategoryComponent = /** @class */ (function () {
-        function NgxEmojCategoryComponent(sanitizer) {
+        function NgxEmojCategoryComponent(sanitizer, cdRef) {
             this.sanitizer = sanitizer;
+            this.cdRef = cdRef;
             this.onselect = new core.EventEmitter;
         }
         /**
@@ -1811,40 +1812,69 @@
          * @return {?}
          */
             function () {
-                this.safeSvgComponent = this.sanitizer.bypassSecurityTrustHtml(this.categoryIcon(((this.active) ? this.martCategoryColorActive : this.martCategoryColor), this.martCategoryFontSize, this.martCategoryFontSize));
+                this.setInnerHtml();
             };
         /**
+         * @param {?} changes
+         * @return {?}
+         */
+        NgxEmojCategoryComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.active.previousValue !== changes.active.currentValue) {
+                    this.setInnerHtml();
+                    this.cdRef.markForCheck();
+                }
+            };
+        /**
+         * @param {?} $event
          * @return {?}
          */
         NgxEmojCategoryComponent.prototype.selectCategory = /**
+         * @param {?} $event
+         * @return {?}
+         */
+            function ($event) {
+                $event.stopPropagation();
+                this.onselect.emit({ name: this.categoryName, icon: this.categoryIcon });
+            };
+        /**
+         * @private
+         * @return {?}
+         */
+        NgxEmojCategoryComponent.prototype.setInnerHtml = /**
+         * @private
          * @return {?}
          */
             function () {
-                this.onselect.emit({ name: this.categoryName, icon: this.categoryIcon });
+                this.safeSvgComponent = this.sanitizer.bypassSecurityTrustHtml(this.categoryIcon(((this.active) ? this.martCategoryColorActive : this.martCategoryColor), this.martCategoryFontSize, this.martCategoryFontSize));
             };
         NgxEmojCategoryComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'ngx-emoj-category',
-                        template: "\n    <button (click)=\"selectCategory()\" class=\"ngx-emoji-category-btn\"\n    [ngStyle]=\"{'color': categoryIconColor,\n                'border-width': activeIndicatorHeight,\n                'border-color': (active) ? activeIndicatorColor : 'transparent'}\"\n                [innerHTML]=safeSvgComponent>\n    </button>\n  ",
+                        template: "\n    <button (click)=\"selectCategory($event)\" class=\"ngx-emoji-category-btn\"\n    [ngStyle]=\"{'color': categoryIconColor,\n                'border-width': activeIndicatorHeight,\n                'border-color': (active) ? activeIndicatorColor : 'transparent'}\"\n                [innerHTML]=safeSvgComponent>\n    </button>\n  ",
                         styles: ["\n  .ngx-emoji-category-btn\n  {\n    background: transparent;\n    padding: 15px 10% 10px 10%;\n    border: none;\n    outline: none;\n    border-bottom: 2px solid transparent;\n  }\n  "]
                     }] }
         ];
         /** @nocollapse */
         NgxEmojCategoryComponent.ctorParameters = function () {
             return [
-                { type: platformBrowser.DomSanitizer }
+                { type: platformBrowser.DomSanitizer },
+                { type: core.ChangeDetectorRef }
             ];
         };
         NgxEmojCategoryComponent.propDecorators = {
             categoryIcon: [{ type: core.Input }],
             categoryName: [{ type: core.Input }],
             categoryIconColor: [{ type: core.Input }],
-            active: [{ type: core.Input }],
             activeIndicatorColor: [{ type: core.Input }],
             activeIndicatorHeight: [{ type: core.Input }],
             martCategoryFontSize: [{ type: core.Input }],
             martCategoryColor: [{ type: core.Input }],
             martCategoryColorActive: [{ type: core.Input }],
+            active: [{ type: core.Input }],
             onselect: [{ type: core.Output }]
         };
         return NgxEmojCategoryComponent;
@@ -1943,7 +1973,7 @@
         NgxEmojCategoryContentComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'ngx-emoj-category-content',
-                        template: "\n  <input *ngIf=\"activeIndex === 0\"  type=\"text\" (keyup)=\"search($event)\" placeholder=\"{{ searchEmojiPlaceholderText }}\"\n  class=\"ngx-emoji-search\" [ngStyle]=\"{'color': searchBoxStyle.FGcolor,\n                                       'background': searchBoxStyle.BGcolor,\n                                       'border-radius': searchBoxStyle.borderRadius,\n                                       'border-color': searchBoxStyle.borderColor}\"/>\n                                       <div class=\"ngx-emoji-not-found\" *ngIf=\"activeIndex === 0 && notFound == true\"\n                                       [ngStyle]=\"{\n                                        'color': martEmojiNotFoundFG\n                                        }\">\n                                        {{ emojiNotFoundText }}\n                                       </div>\n  <div class=\"ngx-emoji-category-content\" [ngStyle]=\"{'padding': '5px'}\"\n                                           #emojiContainer>\n\n      <div class=\"emoji-btn-container\"\n        *ngFor=\"let emo of categoryEmojiSet\" [ngStyle]=\"{'height': emojiBtnPadding.y,\n                                                         'width': emojiBtnPadding.x   }\">\n          <button (click)=\"pickEmoji(emo)\" class=\"ngx-emoji-emoj-btn\"\n          [ngStyle]=\"{'font-size': emojiFontSize}\">\n      {{ emo[0] }}\n    </button>\n      </div>\n  </div>\n  ",
+                        template: "\n  <input *ngIf=\"activeIndex === 0\"  type=\"text\" (keyup)=\"search($event)\" placeholder=\"{{ searchEmojiPlaceholderText }}\"\n  class=\"ngx-emoji-search\" [ngStyle]=\"{'color': searchBoxStyle.FGcolor,\n                                       'background': searchBoxStyle.BGcolor,\n                                       'border-radius': searchBoxStyle.borderRadius,\n                                       'border-color': searchBoxStyle.borderColor}\"/>\n                                       <div class=\"ngx-emoji-not-found\" *ngIf=\"activeIndex === 0 && notFound == true\"\n                                       [ngStyle]=\"{\n                                        'color': martEmojiNotFoundFG\n                                        }\">\n                                        {{ emojiNotFoundText }}\n                                       </div>\n  <div class=\"ngx-emoji-category-content\" [ngStyle]=\"{'padding': '0px 5px 5px 15px'}\"\n                                           #emojiContainer>\n\n      <div class=\"emoji-btn-container\"\n        *ngFor=\"let emo of categoryEmojiSet\" [ngStyle]=\"{'height': emojiBtnPadding.y,\n                                                         'width': emojiBtnPadding.x   }\">\n          <button (click)=\"pickEmoji(emo)\" class=\"ngx-emoji-emoj-btn\"\n          [ngStyle]=\"{'font-size': emojiFontSize}\">\n      {{ emo[0] }}\n    </button>\n      </div>\n  </div>\n  ",
                         styles: ["\n\n\n  .ngx-emoji-not-found\n  {\n    display: table;\n    margin: 60px auto;\n    font-size: 15px;\n    font-family: sans-serif;\n  }\n\n  .ngx-emoji-search\n  {\n    width: 87%;\n    display: table;\n    border: 1px solid;\n    padding: 5px 10px;\n    height: 30px;\n    font-family: sans-serif;\n    margin: 15px auto 10px auto;\n    outline: none;\n  }\n\n  .ngx-emoji-category-content\n  {\n    overflow-y: scroll;\n    height: 80%;\n    width: 105% !important;\n    display: flex;\n    flex-wrap: wrap;\n    text-align: left;\n    align-content: flex-start;\n    justify-content: flex-start;\n  }\n\n  .emoji-btn-container\n  {\n    display: flex;\n    overflow: hidden;\n  }\n  .ngx-emoji-emoj-btn\n  {\n    background: transparent;\n    margin: auto;\n    border: none;\n    outline: none;\n    cursor: pointer;\n  }\n  "]
                     }] }
         ];
