@@ -1,0 +1,23 @@
+{
+  "name": "loop-emoji",
+  "author": {
+    "name": "Victor Aremu",
+    "email": "victor.olorunbunmi@gmail.com",
+    "url": "https://github.com/ahkohd/"
+  },
+  "scripts": {},
+  "version": "0.0.9",
+  "description": "A simple, theme-able emoji mart/picker for angular 4+",
+  "keywords": ["ngx", "emoji", "mart", "picker", "angular", "angular4", "ionic3", "angular7"],
+  "homepage": "https://ahkohd.github.io/ngx-emoj",
+  "repository": {
+  "type" : "git",
+  "url" : "https://github.com/ahkohd/ngx-emoj.git"
+},
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "4.4.6",
+    "@angular/core": "4.4.6"
+  },
+  "dependencies": {}
+}
