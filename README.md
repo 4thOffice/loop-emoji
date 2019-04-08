@@ -4,8 +4,9 @@ From [https://github.com/ahkohd/ngx-emoj](https://github.com/ahkohd/ngx-emoj)
 
 1. Change src code   
 2. Run `ng build loop-emoji`
-3. Go to dist/loop-emoji and copy content
+3. Go to `dist/loop-emoji` and copy content
 4. Post content to master branch (change line in package.json if it includes commit id)
+5. Open `loop-emoji.metadata.json` and change version from 4 to 3 (something to do with version of angular)
 
 Possible inclusions:
 
