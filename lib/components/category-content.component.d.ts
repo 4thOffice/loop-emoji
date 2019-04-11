@@ -1,5 +1,5 @@
-import { EventEmitter, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
-export declare class NgxEmojCategoryContentComponent implements AfterViewInit {
+import { EventEmitter, ElementRef, Renderer2, AfterViewInit, OnChanges } from '@angular/core';
+export declare class NgxEmojCategoryContentComponent implements AfterViewInit, OnChanges {
     private rd;
     categoryName: string;
     categoryEmojiSet: any;
@@ -19,7 +19,9 @@ export declare class NgxEmojCategoryContentComponent implements AfterViewInit {
     searchSet: any;
     recentEmosForSearch: any;
     constructor(rd: Renderer2);
+    ngOnChanges(): void;
     search(e: any): void;
     ngAfterViewInit(): void;
     pickEmoji(emoji: any): void;
+    private focusSearch;
 }

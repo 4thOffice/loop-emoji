@@ -210,20 +210,20 @@ var EMOJIS = [
             ['👧', 'girl'],
             ['👨', 'man'],
             ['👩', 'woman'],
-            ['👱‍♀', 'blonde_woman'],
+            /*['👱‍♀', 'blonde_woman'],*/
             ['👱', 'blonde_man'],
             ['👴', 'older_man'],
             ['👵', 'older_woman'],
             ['👲', 'man_with_gua_pi_mao'],
-            ['👳‍♀', 'woman_with_turban'],
+            /*['👳‍♀', 'woman_with_turban'],*/
             ['👳', 'man_with_turban'],
-            ['👮‍♀', 'policewoman'],
+            /*['👮‍♀', 'policewoman'],*/
             ['👮', 'policeman'],
-            ['👷‍♀', 'construction_worker_woman'],
+            /*['👷‍♀', 'construction_worker_woman'],*/
             ['👷', 'construction_worker_man'],
-            ['💂‍♀', 'guardswoman'],
+            /*['💂‍♀', 'guardswoman'],*/
             ['💂', 'guardsman'],
-            ['🕵️‍♀️', 'female_detective'],
+            /*['🕵️‍♀️', 'female_detective'],*/
             ['🕵', 'male_detective'],
             ['👩‍⚕', 'woman_health_worker'],
             ['👨‍⚕', 'man_health_worker'],
@@ -251,12 +251,12 @@ var EMOJIS = [
             ['👨‍🎨', 'man_artist'],
             ['👩‍🚒', 'woman_firefighter'],
             ['👨‍🚒', 'man_firefighter'],
-            ['👩‍✈', 'woman_pilot'],
-            ['👨‍✈', 'man_pilot'],
+            /*['👩‍✈', 'woman_pilot'],*/
+            /*['👨‍✈', 'man_pilot'],*/
             ['👩‍🚀', 'woman_astronaut'],
             ['👨‍🚀', 'man_astronaut'],
-            ['👩‍⚖', 'woman_judge'],
-            ['👨‍⚖', 'man_judge'],
+            /*['👩‍⚖', 'woman_judge'],*/
+            /*['👨‍⚖', 'man_judge'],*/
             ['🤶', 'mrs_claus'],
             ['🎅', 'santa'],
             ['👸', 'princess'],
@@ -265,36 +265,36 @@ var EMOJIS = [
             ['🤵', 'man_in_tuxedo'],
             ['👼', 'angel'],
             ['🤰', 'pregnant_woman'],
-            ['🙇‍♀', 'bowing_woman'],
+            /*['🙇‍♀', 'bowing_woman'],*/
             ['🙇', 'bowing_man'],
             ['💁', 'tipping_hand_woman'],
-            ['💁‍♂', 'tipping_hand_man'],
+            /*['💁‍♂', 'tipping_hand_man'],*/
             ['🙅', 'no_good_woman'],
-            ['🙅‍♂', 'no_good_man'],
+            /*['🙅‍♂', 'no_good_man'],*/
             ['🙆', 'ok_woman'],
-            ['🙆‍♂', 'ok_man'],
+            /*['🙆‍♂', 'ok_man'],*/
             ['🙋', 'raising_hand_woman'],
-            ['🙋‍♂', 'raising_hand_man'],
-            ['🤦‍♀', 'woman_facepalming'],
-            ['🤦‍♂', 'man_facepalming'],
-            ['🤷‍♀', 'woman_shrugging'],
-            ['🤷‍♂', 'man_shrugging'],
+            /*['🙋‍♂', 'raising_hand_man'],*/
+            /*['🤦‍♀', 'woman_facepalming'],*/
+            /*['🤦‍♂', 'man_facepalming'],*/
+            /*['🤷‍♀', 'woman_shrugging'],*/
+            /*['🤷‍♂', 'man_shrugging'],*/
             ['🙎', 'pouting_woman'],
-            ['🙎‍♂', 'pouting_man'],
+            /*['🙎‍♂', 'pouting_man'],*/
             ['🙍', 'frowning_woman'],
-            ['🙍‍♂', 'frowning_man'],
+            /*['🙍‍♂', 'frowning_man'],*/
             ['💇', 'haircut_woman'],
-            ['💇‍♂', 'haircut_man'],
+            /*['💇‍♂', 'haircut_man'],*/
             ['💆', 'massage_woman'],
-            ['💆‍♂', 'massage_man'],
+            /*['💆‍♂', 'massage_man'],*/
             ['🕴', 'business_suit_levitating'],
             ['💃', 'dancer'],
             ['🕺', 'man_dancing'],
             ['👯', 'dancing_women'],
-            ['👯‍♂', 'dancing_men'],
-            ['🚶‍♀', 'walking_woman'],
+            /*['👯‍♂', 'dancing_men'],*/
+            /*['🚶‍♀', 'walking_woman'],*/
             ['🚶', 'walking_man'],
-            ['🏃‍♀', 'running_woman'],
+            /*['🏃‍♀', 'running_woman'],*/
             ['🏃', 'running_man'],
             ['👫', 'couple'],
             ['👭', 'two_women_holding_hands'],
@@ -663,31 +663,31 @@ var EMOJIS = [
             ['🎿', 'ski'],
             ['⛷', 'skier'],
             ['🏂', 'snowboarder'],
-            ['🏋️‍♀️', 'weight_lifting_woman'],
+            /*['🏋️‍♀️', 'weight_lifting_woman'],*/
             ['🏋', 'weight_lifting_man'],
             ['🤺', 'person_fencing'],
-            ['🤼‍♀', 'women_wrestling'],
-            ['🤼‍♂', 'men_wrestling'],
-            ['🤸‍♀', 'woman_cartwheeling'],
-            ['🤸‍♂', 'man_cartwheeling'],
-            ['⛹️‍♀️', 'basketball_woman'],
+            /*['🤼‍♀', 'women_wrestling'],*/
+            /*['🤼‍♂', 'men_wrestling'],*/
+            /*['🤸‍♀', 'woman_cartwheeling'],*/
+            /*['🤸‍♂', 'man_cartwheeling'],*/
+            /*['⛹️‍♀️', 'basketball_woman'],*/
             ['⛹', 'basketball_man'],
-            ['🤾‍♀', 'woman_playing_handball'],
-            ['🤾‍♂', 'man_playing_handball'],
-            ['🏌️‍♀️', 'golfing_woman'],
+            /*['🤾‍♀', 'woman_playing_handball'],*/
+            /*['🤾‍♂', 'man_playing_handball'],*/
+            /*['🏌️‍♀️', 'golfing_woman'],*/
             ['🏌', 'golfing_man'],
-            ['🏄‍♀', 'surfing_woman'],
+            /*['🏄‍♀', 'surfing_woman'],*/
             ['🏄', 'surfing_man'],
-            ['🏊‍♀', 'swimming_woman'],
+            /*['🏊‍♀', 'swimming_woman'],*/
             ['🏊', 'swimming_man'],
-            ['🤽‍♀', 'woman_playing_water_polo'],
-            ['🤽‍♂', 'man_playing_water_polo'],
-            ['🚣‍♀', 'rowing_woman'],
+            /*['🤽‍♀', 'woman_playing_water_polo'],*/
+            /*['🤽‍♂', 'man_playing_water_polo'],*/
+            /*['🚣‍♀', 'rowing_woman'],*/
             ['🚣', 'rowing_man'],
             ['🏇', 'horse_racing'],
-            ['🚴‍♀', 'biking_woman'],
+            /*['🚴‍♀', 'biking_woman'],*/
             ['🚴', 'biking_man'],
-            ['🚵‍♀', 'mountain_biking_woman'],
+            /*['🚵‍♀', 'mountain_biking_woman'],*/
             ['🚵', 'mountain_biking_man'],
             ['🎽', 'running_shirt_with_sash'],
             ['🏅', 'medal_sports'],
@@ -701,8 +701,8 @@ var EMOJIS = [
             ['🎫', 'ticket'],
             ['🎟', 'tickets'],
             ['🎪', 'circus_tent'],
-            ['🤹‍♀', 'woman_juggling'],
-            ['🤹‍♂', 'man_juggling'],
+            /*['🤹‍♀', 'woman_juggling'],*/
+            /*['🤹‍♂', 'man_juggling'],*/
             ['🎭', 'performing_arts'],
             ['🎨', 'art'],
             ['🎬', 'clapper'],
@@ -1696,8 +1696,8 @@ var NgxEmojHeaderComponent = /** @class */ (function () {
     NgxEmojHeaderComponent.decorators = [
         { type: Component, args: [{
                     selector: 'ngx-emoj-header',
-                    template: "\n    <div\n      class=\"ngx-emoj-header\"\n      [ngStyle]=\"{'background-color': headerBG,\n                  'color': headerFG,\n                  'font-size': headerFontSize,\n                  'padding': headerPadding.y+' '+headerPadding.x}\">\n\n                  <ngx-emoj-category *ngFor=\"let c of emojiCategories\"\n                   [categoryIcon]=\"c.icon[0]\"\n                   [categoryIconColor]=\"'white'\"\n                   [categoryName]=\"c.name\"\n                   [martCategoryFontSize]=\"martCategoryFontSize\"\n                   [martCategoryColor]=\"martCategoryColor\"\n                   [martCategoryColorActive]=\"martCategoryColorActive\"\n                   [activeIndicatorColor]=\"activeIndicatorColor\"\n                   [activeIndicatorHeight]=\"activeIndicatorHeight\"\n                   [active]=\"activeCategory === c.name\"\n                   (onselect)=\"onCategorySelect($event)\">\n                  </ngx-emoj-category>\n    </div>\n  ",
-                    styles: ["\n\n  .ngx-emoj-header\n  {\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n    align-items: center;\n    width: 100%;\n    box-sizing: border-box;\n  }\n\n\n  "]
+                    template: "\n    <div\n      class=\"ngx-emoj-header\"\n      [ngStyle]=\"{'background-color': headerBG,\n                  'color': headerFG,\n                  'font-size': headerFontSize,\n                  'padding': headerPadding.y+' '+headerPadding.x}\">\n\n                  <ngx-emoj-category *ngFor=\"let c of emojiCategories\"\n                   [categoryIcon]=\"c.icon[0]\"\n                   [categoryIconColor]=\"'white'\"\n                   [categoryName]=\"c.name\"\n                   [martCategoryFontSize]=\"martCategoryFontSize\"\n                   [martCategoryColor]=\"martCategoryColor\"\n                   [martCategoryColorActive]=\"martCategoryColorActive\"\n                   [activeIndicatorColor]=\"activeIndicatorColor\"\n                   [activeIndicatorHeight]=\"activeIndicatorHeight\"\n                   [active]=\"activeCategory === c.name\"\n                   (onselect)=\"onCategorySelect($event)\"\n                   [ngStyle]=\"{'width': '26.22px'}\">\n                  </ngx-emoj-category>\n    </div>\n  ",
+                    styles: ["\n\n  .ngx-emoj-header\n  {\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n    align-items: center;\n    width: 100%;\n    box-sizing: border-box;\n  }\n  "]
                 }] }
     ];
     /** @nocollapse */
@@ -1900,12 +1900,22 @@ var NgxEmojCategoryContentComponent = /** @class */ (function () {
         this.onpickemoji = new EventEmitter;
         this.oncontentscroll = new EventEmitter;
         this.oncontentSwipe = new EventEmitter;
-        // @ViewChild('swipePane') swipePane: ElementRef;
         this.searchSet = [];
         this.recentEmosForSearch = [];
         this.initialEmoj = false;
         this.notFound = false;
     }
+    /**
+     * @return {?}
+     */
+    NgxEmojCategoryContentComponent.prototype.ngOnChanges = /**
+     * @return {?}
+     */
+    function () {
+        if (this.activeIndex === 0) {
+            this.focusSearch();
+        }
+    };
     /**
      * @param {?} e
      * @return {?}
@@ -1982,11 +1992,27 @@ var NgxEmojCategoryContentComponent = /** @class */ (function () {
             emoji: emoji
         });
     };
+    /**
+     * @private
+     * @return {?}
+     */
+    NgxEmojCategoryContentComponent.prototype.focusSearch = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        /** @type {?} */
+        var element = this.rd.selectRootElement('.ngx-emoji-search');
+        setTimeout((/**
+         * @return {?}
+         */
+        function () { return element.focus(); }), 0);
+    };
     NgxEmojCategoryContentComponent.decorators = [
         { type: Component, args: [{
                     selector: 'ngx-emoj-category-content',
-                    template: "\n  <input *ngIf=\"activeIndex === 0\"  type=\"text\" (keyup)=\"search($event)\" placeholder=\"{{ searchEmojiPlaceholderText }}\"\n  class=\"ngx-emoji-search\" [ngStyle]=\"{'color': searchBoxStyle.FGcolor,\n                                       'background': searchBoxStyle.BGcolor,\n                                       'border-radius': searchBoxStyle.borderRadius,\n                                       'border-color': searchBoxStyle.borderColor}\"/>\n                                       <div class=\"ngx-emoji-not-found\" *ngIf=\"activeIndex === 0 && notFound == true\"\n                                       [ngStyle]=\"{\n                                        'color': martEmojiNotFoundFG\n                                        }\">\n                                        {{ emojiNotFoundText }}\n                                       </div>\n  <div class=\"ngx-emoji-category-content\" [ngStyle]=\"{'padding': '0px 5px 5px 15px'}\"\n                                           #emojiContainer>\n\n      <div class=\"emoji-btn-container\"\n        *ngFor=\"let emo of categoryEmojiSet\" [ngStyle]=\"{'height': emojiBtnPadding.y,\n                                                         'width': emojiBtnPadding.x   }\">\n          <button (click)=\"pickEmoji(emo)\" class=\"ngx-emoji-emoj-btn\"\n          [ngStyle]=\"{'font-size': emojiFontSize}\">\n      {{ emo[0] }}\n    </button>\n      </div>\n  </div>\n  ",
-                    styles: ["\n\n\n  .ngx-emoji-not-found\n  {\n    display: table;\n    margin: 60px auto;\n    font-size: 15px;\n    font-family: sans-serif;\n  }\n\n  .ngx-emoji-search\n  {\n    width: 87%;\n    display: table;\n    border: 1px solid;\n    padding: 5px 10px;\n    height: 30px;\n    font-family: sans-serif;\n    margin: 15px auto 10px auto;\n    outline: none;\n  }\n\n  .ngx-emoji-category-content\n  {\n    overflow-y: scroll;\n    height: 80%;\n    width: 105% !important;\n    display: flex;\n    flex-wrap: wrap;\n    text-align: left;\n    align-content: flex-start;\n    justify-content: flex-start;\n  }\n\n  .emoji-btn-container\n  {\n    display: flex;\n    overflow: hidden;\n  }\n  .ngx-emoji-emoj-btn\n  {\n    background: transparent;\n    margin: auto;\n    border: none;\n    outline: none;\n    cursor: pointer;\n  }\n  "]
+                    template: "\n  <input [hidden]=\"activeIndex !== 0\"  type=\"text\" (keyup)=\"search($event)\" placeholder=\"{{ searchEmojiPlaceholderText }}\"\n  class=\"ngx-emoji-search\" [ngStyle]=\"{'color': searchBoxStyle.FGcolor,\n                                       'background': searchBoxStyle.BGcolor,\n                                       'border-radius': searchBoxStyle.borderRadius,\n                                       'border-color': searchBoxStyle.borderColor}\"/>\n                                       <div class=\"ngx-emoji-not-found\" *ngIf=\"activeIndex === 0 && notFound == true\"\n                                       [ngStyle]=\"{\n                                        'color': martEmojiNotFoundFG\n                                        }\">\n                                        {{ emojiNotFoundText }}\n                                       </div>\n  <div class=\"ngx-emoji-category-content\"\n       [ngStyle]=\"{'padding': '0px 5px 5px 5%', 'height': activeIndex === 0? '70%':'85%'}\"\n       #emojiContainer>\n\n      <div class=\"emoji-btn-container\"\n        *ngFor=\"let emo of categoryEmojiSet\" [ngStyle]=\"{'height': emojiBtnPadding.y,\n                                                         'width': emojiBtnPadding.x   }\">\n          <button (click)=\"pickEmoji(emo)\" class=\"ngx-emoji-emoj-btn\"\n          [ngStyle]=\"{'font-size': emojiFontSize}\">\n      {{ emo[0] }}\n    </button>\n      </div>\n  </div>\n  ",
+                    styles: ["\n  .ngx-emoji-not-found\n  {\n    display: table;\n    margin: 60px auto;\n    font-size: 15px;\n    font-family: sans-serif;\n  }\n\n  .ngx-emoji-search\n  {\n    width: 87%;\n    display: table;\n    border: 1px solid;\n    padding: 5px 10px;\n    height: 30px;\n    font-family: sans-serif;\n    margin: 15px auto 10px auto;\n    outline: none;\n  }\n\n  .ngx-emoji-category-content\n  {\n    overflow-y: scroll;\n    width: 100% !important;\n    display: flex;\n    flex-wrap: wrap;\n    text-align: left;\n    align-content: flex-start;\n    justify-content: flex-start;\n  }\n\n  .emoji-btn-container\n  {\n    display: flex;\n    overflow: hidden;\n  }\n  .ngx-emoji-emoj-btn\n  {\n    background: transparent;\n    margin: auto;\n    border: none;\n    outline: none;\n    cursor: pointer;\n  }\n  "]
                 }] }
     ];
     /** @nocollapse */

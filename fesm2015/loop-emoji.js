@@ -210,20 +210,20 @@ const EMOJIS = [
             ['👧', 'girl'],
             ['👨', 'man'],
             ['👩', 'woman'],
-            ['👱‍♀', 'blonde_woman'],
+            /*['👱‍♀', 'blonde_woman'],*/
             ['👱', 'blonde_man'],
             ['👴', 'older_man'],
             ['👵', 'older_woman'],
             ['👲', 'man_with_gua_pi_mao'],
-            ['👳‍♀', 'woman_with_turban'],
+            /*['👳‍♀', 'woman_with_turban'],*/
             ['👳', 'man_with_turban'],
-            ['👮‍♀', 'policewoman'],
+            /*['👮‍♀', 'policewoman'],*/
             ['👮', 'policeman'],
-            ['👷‍♀', 'construction_worker_woman'],
+            /*['👷‍♀', 'construction_worker_woman'],*/
             ['👷', 'construction_worker_man'],
-            ['💂‍♀', 'guardswoman'],
+            /*['💂‍♀', 'guardswoman'],*/
             ['💂', 'guardsman'],
-            ['🕵️‍♀️', 'female_detective'],
+            /*['🕵️‍♀️', 'female_detective'],*/
             ['🕵', 'male_detective'],
             ['👩‍⚕', 'woman_health_worker'],
             ['👨‍⚕', 'man_health_worker'],
@@ -251,12 +251,12 @@ const EMOJIS = [
             ['👨‍🎨', 'man_artist'],
             ['👩‍🚒', 'woman_firefighter'],
             ['👨‍🚒', 'man_firefighter'],
-            ['👩‍✈', 'woman_pilot'],
-            ['👨‍✈', 'man_pilot'],
+            /*['👩‍✈', 'woman_pilot'],*/
+            /*['👨‍✈', 'man_pilot'],*/
             ['👩‍🚀', 'woman_astronaut'],
             ['👨‍🚀', 'man_astronaut'],
-            ['👩‍⚖', 'woman_judge'],
-            ['👨‍⚖', 'man_judge'],
+            /*['👩‍⚖', 'woman_judge'],*/
+            /*['👨‍⚖', 'man_judge'],*/
             ['🤶', 'mrs_claus'],
             ['🎅', 'santa'],
             ['👸', 'princess'],
@@ -265,36 +265,36 @@ const EMOJIS = [
             ['🤵', 'man_in_tuxedo'],
             ['👼', 'angel'],
             ['🤰', 'pregnant_woman'],
-            ['🙇‍♀', 'bowing_woman'],
+            /*['🙇‍♀', 'bowing_woman'],*/
             ['🙇', 'bowing_man'],
             ['💁', 'tipping_hand_woman'],
-            ['💁‍♂', 'tipping_hand_man'],
+            /*['💁‍♂', 'tipping_hand_man'],*/
             ['🙅', 'no_good_woman'],
-            ['🙅‍♂', 'no_good_man'],
+            /*['🙅‍♂', 'no_good_man'],*/
             ['🙆', 'ok_woman'],
-            ['🙆‍♂', 'ok_man'],
+            /*['🙆‍♂', 'ok_man'],*/
             ['🙋', 'raising_hand_woman'],
-            ['🙋‍♂', 'raising_hand_man'],
-            ['🤦‍♀', 'woman_facepalming'],
-            ['🤦‍♂', 'man_facepalming'],
-            ['🤷‍♀', 'woman_shrugging'],
-            ['🤷‍♂', 'man_shrugging'],
+            /*['🙋‍♂', 'raising_hand_man'],*/
+            /*['🤦‍♀', 'woman_facepalming'],*/
+            /*['🤦‍♂', 'man_facepalming'],*/
+            /*['🤷‍♀', 'woman_shrugging'],*/
+            /*['🤷‍♂', 'man_shrugging'],*/
             ['🙎', 'pouting_woman'],
-            ['🙎‍♂', 'pouting_man'],
+            /*['🙎‍♂', 'pouting_man'],*/
             ['🙍', 'frowning_woman'],
-            ['🙍‍♂', 'frowning_man'],
+            /*['🙍‍♂', 'frowning_man'],*/
             ['💇', 'haircut_woman'],
-            ['💇‍♂', 'haircut_man'],
+            /*['💇‍♂', 'haircut_man'],*/
             ['💆', 'massage_woman'],
-            ['💆‍♂', 'massage_man'],
+            /*['💆‍♂', 'massage_man'],*/
             ['🕴', 'business_suit_levitating'],
             ['💃', 'dancer'],
             ['🕺', 'man_dancing'],
             ['👯', 'dancing_women'],
-            ['👯‍♂', 'dancing_men'],
-            ['🚶‍♀', 'walking_woman'],
+            /*['👯‍♂', 'dancing_men'],*/
+            /*['🚶‍♀', 'walking_woman'],*/
             ['🚶', 'walking_man'],
-            ['🏃‍♀', 'running_woman'],
+            /*['🏃‍♀', 'running_woman'],*/
             ['🏃', 'running_man'],
             ['👫', 'couple'],
             ['👭', 'two_women_holding_hands'],
@@ -663,31 +663,31 @@ const EMOJIS = [
             ['🎿', 'ski'],
             ['⛷', 'skier'],
             ['🏂', 'snowboarder'],
-            ['🏋️‍♀️', 'weight_lifting_woman'],
+            /*['🏋️‍♀️', 'weight_lifting_woman'],*/
             ['🏋', 'weight_lifting_man'],
             ['🤺', 'person_fencing'],
-            ['🤼‍♀', 'women_wrestling'],
-            ['🤼‍♂', 'men_wrestling'],
-            ['🤸‍♀', 'woman_cartwheeling'],
-            ['🤸‍♂', 'man_cartwheeling'],
-            ['⛹️‍♀️', 'basketball_woman'],
+            /*['🤼‍♀', 'women_wrestling'],*/
+            /*['🤼‍♂', 'men_wrestling'],*/
+            /*['🤸‍♀', 'woman_cartwheeling'],*/
+            /*['🤸‍♂', 'man_cartwheeling'],*/
+            /*['⛹️‍♀️', 'basketball_woman'],*/
             ['⛹', 'basketball_man'],
-            ['🤾‍♀', 'woman_playing_handball'],
-            ['🤾‍♂', 'man_playing_handball'],
-            ['🏌️‍♀️', 'golfing_woman'],
+            /*['🤾‍♀', 'woman_playing_handball'],*/
+            /*['🤾‍♂', 'man_playing_handball'],*/
+            /*['🏌️‍♀️', 'golfing_woman'],*/
             ['🏌', 'golfing_man'],
-            ['🏄‍♀', 'surfing_woman'],
+            /*['🏄‍♀', 'surfing_woman'],*/
             ['🏄', 'surfing_man'],
-            ['🏊‍♀', 'swimming_woman'],
+            /*['🏊‍♀', 'swimming_woman'],*/
             ['🏊', 'swimming_man'],
-            ['🤽‍♀', 'woman_playing_water_polo'],
-            ['🤽‍♂', 'man_playing_water_polo'],
-            ['🚣‍♀', 'rowing_woman'],
+            /*['🤽‍♀', 'woman_playing_water_polo'],*/
+            /*['🤽‍♂', 'man_playing_water_polo'],*/
+            /*['🚣‍♀', 'rowing_woman'],*/
             ['🚣', 'rowing_man'],
             ['🏇', 'horse_racing'],
-            ['🚴‍♀', 'biking_woman'],
+            /*['🚴‍♀', 'biking_woman'],*/
             ['🚴', 'biking_man'],
-            ['🚵‍♀', 'mountain_biking_woman'],
+            /*['🚵‍♀', 'mountain_biking_woman'],*/
             ['🚵', 'mountain_biking_man'],
             ['🎽', 'running_shirt_with_sash'],
             ['🏅', 'medal_sports'],
@@ -701,8 +701,8 @@ const EMOJIS = [
             ['🎫', 'ticket'],
             ['🎟', 'tickets'],
             ['🎪', 'circus_tent'],
-            ['🤹‍♀', 'woman_juggling'],
-            ['🤹‍♂', 'man_juggling'],
+            /*['🤹‍♀', 'woman_juggling'],*/
+            /*['🤹‍♂', 'man_juggling'],*/
             ['🎭', 'performing_arts'],
             ['🎨', 'art'],
             ['🎬', 'clapper'],
@@ -1739,7 +1739,8 @@ NgxEmojHeaderComponent.decorators = [
                    [activeIndicatorColor]="activeIndicatorColor"
                    [activeIndicatorHeight]="activeIndicatorHeight"
                    [active]="activeCategory === c.name"
-                   (onselect)="onCategorySelect($event)">
+                   (onselect)="onCategorySelect($event)"
+                   [ngStyle]="{'width': '26.22px'}">
                   </ngx-emoj-category>
     </div>
   `,
@@ -1754,8 +1755,6 @@ NgxEmojHeaderComponent.decorators = [
     width: 100%;
     box-sizing: border-box;
   }
-
-
   `]
             }] }
 ];
@@ -2063,11 +2062,18 @@ class NgxEmojCategoryContentComponent {
         this.onpickemoji = new EventEmitter;
         this.oncontentscroll = new EventEmitter;
         this.oncontentSwipe = new EventEmitter;
-        // @ViewChild('swipePane') swipePane: ElementRef;
         this.searchSet = [];
         this.recentEmosForSearch = [];
         this.initialEmoj = false;
         this.notFound = false;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnChanges() {
+        if (this.activeIndex === 0) {
+            this.focusSearch();
+        }
     }
     /**
      * @param {?} e
@@ -2133,12 +2139,24 @@ class NgxEmojCategoryContentComponent {
             emoji: emoji
         });
     }
+    /**
+     * @private
+     * @return {?}
+     */
+    focusSearch() {
+        /** @type {?} */
+        const element = this.rd.selectRootElement('.ngx-emoji-search');
+        setTimeout((/**
+         * @return {?}
+         */
+        () => element.focus()), 0);
+    }
 }
 NgxEmojCategoryContentComponent.decorators = [
     { type: Component, args: [{
                 selector: 'ngx-emoj-category-content',
                 template: `
-  <input *ngIf="activeIndex === 0"  type="text" (keyup)="search($event)" placeholder="{{ searchEmojiPlaceholderText }}"
+  <input [hidden]="activeIndex !== 0"  type="text" (keyup)="search($event)" placeholder="{{ searchEmojiPlaceholderText }}"
   class="ngx-emoji-search" [ngStyle]="{'color': searchBoxStyle.FGcolor,
                                        'background': searchBoxStyle.BGcolor,
                                        'border-radius': searchBoxStyle.borderRadius,
@@ -2149,8 +2167,9 @@ NgxEmojCategoryContentComponent.decorators = [
                                         }">
                                         {{ emojiNotFoundText }}
                                        </div>
-  <div class="ngx-emoji-category-content" [ngStyle]="{'padding': '0px 5px 5px 15px'}"
-                                           #emojiContainer>
+  <div class="ngx-emoji-category-content"
+       [ngStyle]="{'padding': '0px 5px 5px 5%', 'height': activeIndex === 0? '70%':'85%'}"
+       #emojiContainer>
 
       <div class="emoji-btn-container"
         *ngFor="let emo of categoryEmojiSet" [ngStyle]="{'height': emojiBtnPadding.y,
@@ -2163,8 +2182,6 @@ NgxEmojCategoryContentComponent.decorators = [
   </div>
   `,
                 styles: [`
-
-
   .ngx-emoji-not-found
   {
     display: table;
@@ -2188,8 +2205,7 @@ NgxEmojCategoryContentComponent.decorators = [
   .ngx-emoji-category-content
   {
     overflow-y: scroll;
-    height: 80%;
-    width: 105% !important;
+    width: 100% !important;
     display: flex;
     flex-wrap: wrap;
     text-align: left;
