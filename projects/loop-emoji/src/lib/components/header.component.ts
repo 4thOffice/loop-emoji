@@ -1,8 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
-
-
-
 @Component({
   selector: 'ngx-emoj-header',
   template: `
@@ -23,7 +20,8 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
                    [activeIndicatorColor]="activeIndicatorColor"
                    [activeIndicatorHeight]="activeIndicatorHeight"
                    [active]="activeCategory === c.name"
-                   (onselect)="onCategorySelect($event)">
+                   (onselect)="onCategorySelect($event)"
+                   [ngStyle]="{'width': '26.22px'}">
                   </ngx-emoj-category>
     </div>
   `,
@@ -38,8 +36,6 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
     width: 100%;
     box-sizing: border-box;
   }
-
-
   `]
 })
 

@@ -6,7 +6,8 @@ import {
   ElementRef,
   ViewChild,
   Renderer2,
-  AfterViewInit
+  AfterViewInit,
+  OnChanges
 } from '@angular/core';
 import {
   EMOJIS
@@ -15,7 +16,7 @@ import {
 @Component({
   selector: 'ngx-emoj-category-content',
   template: `
-  <input *ngIf="activeIndex === 0"  type="text" (keyup)="search($event)" placeholder="{{ searchEmojiPlaceholderText }}"
+  <input [hidden]="activeIndex !== 0"  type="text" (keyup)="search($event)" placeholder="{{ searchEmojiPlaceholderText }}"
   class="ngx-emoji-search" [ngStyle]="{'color': searchBoxStyle.FGcolor,
                                        'background': searchBoxStyle.BGcolor,
                                        'border-radius': searchBoxStyle.borderRadius,
@@ -26,8 +27,9 @@ import {
                                         }">
                                         {{ emojiNotFoundText }}
                                        </div>
-  <div class="ngx-emoji-category-content" [ngStyle]="{'padding': '0px 5px 5px 15px'}"
-                                           #emojiContainer>
+  <div class="ngx-emoji-category-content"
+       [ngStyle]="{'padding': '0px 5px 5px 5%', 'height': activeIndex === 0? '70%':'85%'}"
+       #emojiContainer>
 
       <div class="emoji-btn-container"
         *ngFor="let emo of categoryEmojiSet" [ngStyle]="{'height': emojiBtnPadding.y,
@@ -40,8 +42,6 @@ import {
   </div>
   `,
   styles: [`
-
-
   .ngx-emoji-not-found
   {
     display: table;
@@ -65,8 +65,7 @@ import {
   .ngx-emoji-category-content
   {
     overflow-y: scroll;
-    height: 80%;
-    width: 105% !important;
+    width: 100% !important;
     display: flex;
     flex-wrap: wrap;
     text-align: left;
@@ -89,7 +88,7 @@ import {
   }
   `]
 })
-export class NgxEmojCategoryContentComponent implements AfterViewInit {
+export class NgxEmojCategoryContentComponent implements AfterViewInit, OnChanges {
 
   @Input() categoryName: string;
   @Input() categoryEmojiSet: any;
@@ -109,7 +108,6 @@ export class NgxEmojCategoryContentComponent implements AfterViewInit {
   initialEmoj: boolean;
 
   @ViewChild('emojiContainer') emojiContainer: ElementRef;
-  // @ViewChild('swipePane') swipePane: ElementRef;
 
   searchSet: any = [];
   recentEmosForSearch: any = [];
@@ -119,6 +117,11 @@ export class NgxEmojCategoryContentComponent implements AfterViewInit {
     this.notFound = false;
   }
 
+  ngOnChanges() {
+    if (this.activeIndex === 0) {
+        this.focusSearch();
+    }
+  }
 
   search(e) {
     if (!this.initialEmoj) {
@@ -150,7 +153,6 @@ export class NgxEmojCategoryContentComponent implements AfterViewInit {
     }
   }
 
-
   ngAfterViewInit() {
     // listen for scroll event
     this.rd.listen(this.emojiContainer.nativeElement, 'scroll', (e) => {
@@ -165,5 +167,10 @@ export class NgxEmojCategoryContentComponent implements AfterViewInit {
     this.onpickemoji.emit({
       emoji: emoji
     });
+  }
+
+  private focusSearch() {
+    const element = this.rd.selectRootElement('.ngx-emoji-search');
+    setTimeout(() => element.focus(), 0);
   }
 }
