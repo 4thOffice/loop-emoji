@@ -17,6 +17,7 @@ export default interface Theme {
     martHeight?: string;
     martBorderRadius?: string;
     martEmojiFontSize?: string;
+    martEmojiContentPaddingLeft?: string;
     martEmojiPadding?: {
         x: string;
         y: string;

@@ -10,6 +10,7 @@ export declare class NgxEmojCategoryContentComponent implements AfterViewInit, O
     searchBoxStyle: any;
     emojiNotFoundText: string;
     martEmojiNotFoundFG: string;
+    martEmojiContentPaddingLeft: string;
     onpickemoji: EventEmitter<{}>;
     oncontentscroll: any;
     oncontentSwipe: any;

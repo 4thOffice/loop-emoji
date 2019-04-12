@@ -24,6 +24,7 @@ const DEFAULTS = {
     martHeight: '30vh',
     martBorderRadius: '5px',
     martEmojiFontSize: '120%',
+    martEmojiContentPaddingLeft: '6%',
     martEmojiPadding: { x: '40px', y: '40px' },
     martFooterFG: '#fff',
     martFooterBG: '#222',
@@ -76,9 +77,9 @@ const EMOJIS = [
             ['🤣', 'rofl'],
             ['😊', 'blush'],
             ['😇', 'innocent'],
-            ['🙂', 'slightly_smiling_face'],
+            ['🙂', 'slightly_smiling_face, :)'],
             ['🙃', 'upside_down_face'],
-            ['😉', 'wink'],
+            ['😉', 'wink, ;)'],
             ['😌', 'relieved'],
             ['😍', 'heart_eyes'],
             ['😘', 'kissing_heart'],
@@ -88,11 +89,11 @@ const EMOJIS = [
             ['😋', 'yum'],
             ['😜', 'stuck_out_tongue_winking_eye'],
             ['😝', 'stuck_out_tongue_closed_eyes'],
-            ['😛', 'stuck_out_tongue'],
+            ['😛', 'stuck_out_tongue, :P'],
             ['🤑', 'money_mouth_face'],
             ['🤗', 'hugs'],
             ['🤓', 'nerd_face'],
-            ['😎', 'sunglasses'],
+            ['😎', 'sunglasses, B)'],
             ['🤡', 'clown_face'],
             ['🤠', 'cowboy_hat_face'],
             ['😏', 'smirk'],
@@ -102,7 +103,7 @@ const EMOJIS = [
             ['😟', 'worried'],
             ['😕', 'confused'],
             ['🙁', 'slightly_frowning_face'],
-            ['☹️', 'frowning_face'],
+            ['☹️', 'frowning_face, :('],
             ['😣', 'persevere'],
             ['😖', 'confounded'],
             ['😫', 'tired_face'],
@@ -111,7 +112,7 @@ const EMOJIS = [
             ['😠', 'angry'],
             ['😡', 'rage'],
             ['😶', 'no_mouth'],
-            ['😐', 'neutral_face'],
+            ['😐', 'neutral_face, :|'],
             ['😑', 'expressionless'],
             ['😯', 'hushed'],
             ['😦', 'frowning'],
@@ -1641,6 +1642,7 @@ NgxEmojComponent.decorators = [
       [searchEmojiPlaceholderText]="(searchEmojiPlaceholderText || DEFAULTS.searchEmojiPlaceholderText)"
       [emojiBtnPadding]="(theme.martEmojiPadding || DEFAULTS.martEmojiPadding)"
       [emojiFontSize]="(theme.martEmojiFontSize || DEFAULTS.martEmojiFontSize)"
+      [martEmojiContentPaddingLeft]="(theme.martEmojiContentPaddingLeft || DEFAULTS.martEmojiContentPaddingLeft)"
       (onpickemoji)="handleEmojiPick($event)"
       (oncontentSwipe)="handleContentSwipe($event)"
       (oncontentscroll)="handleContentScroll($event)">
@@ -2168,7 +2170,7 @@ NgxEmojCategoryContentComponent.decorators = [
                                         {{ emojiNotFoundText }}
                                        </div>
   <div class="ngx-emoji-category-content"
-       [ngStyle]="{'padding': '0px 5px 5px 5%', 'height': activeIndex === 0? '70%':'85%'}"
+       [ngStyle]="{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}"
        #emojiContainer>
 
       <div class="emoji-btn-container"
@@ -2243,6 +2245,7 @@ NgxEmojCategoryContentComponent.propDecorators = {
     searchBoxStyle: [{ type: Input }],
     emojiNotFoundText: [{ type: Input }],
     martEmojiNotFoundFG: [{ type: Input }],
+    martEmojiContentPaddingLeft: [{ type: Input }],
     onpickemoji: [{ type: Output }],
     oncontentscroll: [{ type: Output }],
     oncontentSwipe: [{ type: Output }],
