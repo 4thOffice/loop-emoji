@@ -1,34 +1,26 @@
 import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ElementRef,
-  ViewChild,
-  Renderer2,
-  AfterViewInit,
-  OnChanges
+    Component,
+    Input,
+    Output,
+    EventEmitter,
+    ElementRef,
+    ViewChild,
 } from '@angular/core';
 import {
-  EMOJIS
+    EMOJIS
 } from '../misc/emojis.data';
 
 @Component({
-  selector: 'ngx-emoj-category-content',
-  template: `
-  <input [hidden]="activeIndex !== 0"  type="text" (keyup)="search($event)" placeholder="{{ searchEmojiPlaceholderText }}"
-  class="ngx-emoji-search" [ngStyle]="{'color': searchBoxStyle.FGcolor,
-                                       'background': searchBoxStyle.BGcolor,
-                                       'border-radius': searchBoxStyle.borderRadius,
-                                       'border-color': searchBoxStyle.borderColor}"/>
-                                       <div class="ngx-emoji-not-found" *ngIf="activeIndex === 0 && notFound == true"
-                                       [ngStyle]="{
-                                        'color': martEmojiNotFoundFG
-                                        }">
-                                        {{ emojiNotFoundText }}
-                                       </div>
+    selector: 'ngx-emoj-category-content',
+    template: `
+    <div class="ngx-emoji-not-found" *ngIf="activeIndex === 0 && notFound == true"
+    [ngStyle]="{
+    'color': martEmojiNotFoundFG
+    }">
+    {{ emojiNotFoundText }}
+    </div>
   <div class="ngx-emoji-category-content"
-       [ngStyle]="{'padding': '0px 5px 5px 5%', 'height': activeIndex === 0? '70%':'85%'}"
+       [ngStyle]="{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}"
        #emojiContainer>
 
       <div class="emoji-btn-container"
@@ -41,7 +33,7 @@ import {
       </div>
   </div>
   `,
-  styles: [`
+    styles: [`
   .ngx-emoji-not-found
   {
     display: table;
@@ -88,89 +80,69 @@ import {
   }
   `]
 })
-export class NgxEmojCategoryContentComponent implements AfterViewInit, OnChanges {
+export class NgxEmojCategoryContentComponent {
 
-  @Input() categoryName: string;
-  @Input() categoryEmojiSet: any;
-  @Input() activeIndex: number;
-  @Input() emojiBtnPadding: any;
-  @Input() emojiFontSize: string;
-  @Input() searchEmojiPlaceholderText: string;
-  @Input() searchBoxStyle: any;
-  @Input() emojiNotFoundText: string;
-  @Input() martEmojiNotFoundFG: string;
+    @Input() categoryName: string;
+    @Input() categoryEmojiSet: any;
+    @Input() activeIndex: number;
+    @Input() emojiBtnPadding: any;
+    @Input() emojiFontSize: string;
+    @Input() searchEmojiPlaceholderText: string;
+    @Input() searchBoxStyle: any;
+    @Input() emojiNotFoundText: string;
+    @Input() martEmojiNotFoundFG: string;
+    @Input() martEmojiContentPaddingLeft: string;
 
-  @Output() onpickemoji = new EventEmitter;
-  @Output() oncontentscroll: any = new EventEmitter;
-  @Output() oncontentSwipe: any = new EventEmitter;
+    @Output() onpickemoji = new EventEmitter;
+    @Output() oncontentscroll: any = new EventEmitter;
+    @Output() oncontentSwipe: any = new EventEmitter;
 
-  notFound: boolean;
-  initialEmoj: boolean;
+    notFound: boolean;
+    initialEmoj: boolean;
 
-  @ViewChild('emojiContainer') emojiContainer: ElementRef;
+    @ViewChild('emojiContainer') emojiContainer: ElementRef;
 
-  searchSet: any = [];
-  recentEmosForSearch: any = [];
+    searchSet: any = [];
+    recentEmosForSearch: any = [];
 
-  constructor(private rd: Renderer2) {
-    this.initialEmoj = false;
-    this.notFound = false;
-  }
-
-  ngOnChanges() {
-    if (this.activeIndex === 0) {
-        this.focusSearch();
+    constructor() {
+        this.initialEmoj = false;
+        this.notFound = false;
     }
-  }
 
-  search(e) {
-    if (!this.initialEmoj) {
-      // save the recent emojs
-      this.recentEmosForSearch = this.categoryEmojiSet;
-      let searchSet = [];
-      for (let i = 2; i < EMOJIS.length; i++) {
-        searchSet = searchSet.concat(EMOJIS[i].emojis);
-      }
-      this.searchSet = searchSet;
-      this.initialEmoj = true;
-    }
-    const query = e.target.value.toLowerCase();
-
-    if (query && query.trim() !== '') {
-      this.categoryEmojiSet = this.searchSet.filter(item => {
-        if (item[1].toLowerCase().indexOf(query) > -1) {
-          return item;
+    search(e) {
+        if (!this.initialEmoj) {
+            // save the recent emojs
+            this.recentEmosForSearch = this.categoryEmojiSet;
+            let searchSet = [];
+            for (let i = 2; i < EMOJIS.length; i++) {
+                searchSet = searchSet.concat(EMOJIS[i].emojis);
+            }
+            this.searchSet = searchSet;
+            this.initialEmoj = true;
         }
-      });
+        const query = e.target.value.toLowerCase();
 
-    } else {
-      this.categoryEmojiSet = this.recentEmosForSearch;
+        if (query && query.trim() !== '') {
+            this.categoryEmojiSet = this.searchSet.filter(item => {
+                if (item[1].toLowerCase().indexOf(query) > -1) {
+                    return item;
+                }
+            });
+
+        } else {
+            this.categoryEmojiSet = this.recentEmosForSearch;
+        }
+        if (this.categoryEmojiSet.length === 0) {
+            this.notFound = true;
+        } else {
+            this.notFound = false;
+        }
     }
-    if (this.categoryEmojiSet.length === 0) {
-      this.notFound = true;
-    } else {
-      this.notFound = false;
+
+    pickEmoji(emoji) {
+        this.onpickemoji.emit({
+            emoji: emoji
+        });
     }
-  }
-
-  ngAfterViewInit() {
-    // listen for scroll event
-    this.rd.listen(this.emojiContainer.nativeElement, 'scroll', (e) => {
-      this.oncontentscroll.emit({
-        scrollTop: this.emojiContainer.nativeElement.scrollTop,
-        scrollHeight: this.emojiContainer.nativeElement.scrollHeight
-      });
-    });
-  }
-
-  pickEmoji(emoji) {
-    this.onpickemoji.emit({
-      emoji: emoji
-    });
-  }
-
-  private focusSearch() {
-    const element = this.rd.selectRootElement('.ngx-emoji-search');
-    setTimeout(() => element.focus(), 0);
-  }
 }

@@ -44,6 +44,7 @@ import { EMOS } from './misc/emos.data';
       [searchEmojiPlaceholderText]="(searchEmojiPlaceholderText || DEFAULTS.searchEmojiPlaceholderText)"
       [emojiBtnPadding]="(theme.martEmojiPadding || DEFAULTS.martEmojiPadding)"
       [emojiFontSize]="(theme.martEmojiFontSize || DEFAULTS.martEmojiFontSize)"
+      [martEmojiContentPaddingLeft]="(theme.martEmojiContentPaddingLeft || DEFAULTS.martEmojiContentPaddingLeft)"
       (onpickemoji)="handleEmojiPick($event)"
       (oncontentSwipe)="handleContentSwipe($event)"
       (oncontentscroll)="handleContentScroll($event)">
@@ -134,12 +135,12 @@ export class NgxEmojComponent implements OnInit {
 
     this.activeCategory = 'People';
     // get the emoji categories
-    this.emojiCategories = EMOJIS.map((value) => {
+    this.emojiCategories = EMOJIS.slice(1).map((value) => {
       return {name: value.name, icon: value.icon};
     });
 
     // filter to set defaults
-    this.activeEmojiSet = EMOJIS.filter((category) => {
+    this.activeEmojiSet = EMOJIS.slice(1).filter((category) => {
       if (category.name === this.activeCategory) {
             return category;
       }

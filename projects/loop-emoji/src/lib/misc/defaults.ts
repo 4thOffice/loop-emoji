@@ -15,6 +15,7 @@ const DEFAULTS: any = {
     martHeight: '30vh',
     martBorderRadius: '5px',
     martEmojiFontSize: '120%',
+    martEmojiContentPaddingLeft: '6%',
     martEmojiPadding: {x: '40px', y: '40px'},
     martFooterFG: '#fff',
     martFooterBG: '#222',
