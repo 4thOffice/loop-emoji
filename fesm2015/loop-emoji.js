@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, Renderer2, NgModule } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, NgModule } from '@angular/core';
 
 /**
  * @fileoverview added by tsickle
@@ -1384,7 +1384,7 @@ class NgxEmojComponent {
         }
         this.activeCategory = 'People';
         // get the emoji categories
-        this.emojiCategories = EMOJIS.map((/**
+        this.emojiCategories = EMOJIS.slice(1).map((/**
          * @param {?} value
          * @return {?}
          */
@@ -1392,7 +1392,7 @@ class NgxEmojComponent {
             return { name: value.name, icon: value.icon };
         }));
         // filter to set defaults
-        this.activeEmojiSet = EMOJIS.filter((/**
+        this.activeEmojiSet = EMOJIS.slice(1).filter((/**
          * @param {?} category
          * @return {?}
          */
@@ -2056,11 +2056,7 @@ NgxEmojCategoryComponent.propDecorators = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class NgxEmojCategoryContentComponent {
-    /**
-     * @param {?} rd
-     */
-    constructor(rd) {
-        this.rd = rd;
+    constructor() {
         this.onpickemoji = new EventEmitter;
         this.oncontentscroll = new EventEmitter;
         this.oncontentSwipe = new EventEmitter;
@@ -2068,14 +2064,6 @@ class NgxEmojCategoryContentComponent {
         this.recentEmosForSearch = [];
         this.initialEmoj = false;
         this.notFound = false;
-    }
-    /**
-     * @return {?}
-     */
-    ngOnChanges() {
-        if (this.activeIndex === 0) {
-            this.focusSearch();
-        }
     }
     /**
      * @param {?} e
@@ -2117,22 +2105,6 @@ class NgxEmojCategoryContentComponent {
         }
     }
     /**
-     * @return {?}
-     */
-    ngAfterViewInit() {
-        // listen for scroll event
-        this.rd.listen(this.emojiContainer.nativeElement, 'scroll', (/**
-         * @param {?} e
-         * @return {?}
-         */
-        (e) => {
-            this.oncontentscroll.emit({
-                scrollTop: this.emojiContainer.nativeElement.scrollTop,
-                scrollHeight: this.emojiContainer.nativeElement.scrollHeight
-            });
-        }));
-    }
-    /**
      * @param {?} emoji
      * @return {?}
      */
@@ -2141,34 +2113,17 @@ class NgxEmojCategoryContentComponent {
             emoji: emoji
         });
     }
-    /**
-     * @private
-     * @return {?}
-     */
-    focusSearch() {
-        /** @type {?} */
-        const element = this.rd.selectRootElement('.ngx-emoji-search');
-        setTimeout((/**
-         * @return {?}
-         */
-        () => element.focus()), 0);
-    }
 }
 NgxEmojCategoryContentComponent.decorators = [
     { type: Component, args: [{
                 selector: 'ngx-emoj-category-content',
                 template: `
-  <input [hidden]="activeIndex !== 0"  type="text" (keyup)="search($event)" placeholder="{{ searchEmojiPlaceholderText }}"
-  class="ngx-emoji-search" [ngStyle]="{'color': searchBoxStyle.FGcolor,
-                                       'background': searchBoxStyle.BGcolor,
-                                       'border-radius': searchBoxStyle.borderRadius,
-                                       'border-color': searchBoxStyle.borderColor}"/>
-                                       <div class="ngx-emoji-not-found" *ngIf="activeIndex === 0 && notFound == true"
-                                       [ngStyle]="{
-                                        'color': martEmojiNotFoundFG
-                                        }">
-                                        {{ emojiNotFoundText }}
-                                       </div>
+    <div class="ngx-emoji-not-found" *ngIf="activeIndex === 0 && notFound == true"
+    [ngStyle]="{
+    'color': martEmojiNotFoundFG
+    }">
+    {{ emojiNotFoundText }}
+    </div>
   <div class="ngx-emoji-category-content"
        [ngStyle]="{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}"
        #emojiContainer>
@@ -2232,9 +2187,7 @@ NgxEmojCategoryContentComponent.decorators = [
             }] }
 ];
 /** @nocollapse */
-NgxEmojCategoryContentComponent.ctorParameters = () => [
-    { type: Renderer2 }
-];
+NgxEmojCategoryContentComponent.ctorParameters = () => [];
 NgxEmojCategoryContentComponent.propDecorators = {
     categoryName: [{ type: Input }],
     categoryEmojiSet: [{ type: Input }],
