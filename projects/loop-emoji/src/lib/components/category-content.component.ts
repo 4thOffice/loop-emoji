@@ -13,6 +13,11 @@ import {
 @Component({
     selector: 'ngx-emoj-category-content',
     template: `
+    <input [hidden]="activeIndex !== 0"  type="text" (keyup)="search($event)" placeholder="{{ searchEmojiPlaceholderText }}"
+        class="ngx-emoji-search" [ngStyle]="{'color': searchBoxStyle.FGcolor,
+        'background': searchBoxStyle.BGcolor,
+        'border-radius': searchBoxStyle.borderRadius,
+        'border-color': searchBoxStyle.borderColor}"/>
     <div class="ngx-emoji-not-found" *ngIf="activeIndex === 0 && notFound == true"
     [ngStyle]="{
     'color': martEmojiNotFoundFG
@@ -20,6 +25,7 @@ import {
     {{ emojiNotFoundText }}
     </div>
   <div class="ngx-emoji-category-content"
+       *ngIf="!notFound"
        [ngStyle]="{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}"
        #emojiContainer>
 

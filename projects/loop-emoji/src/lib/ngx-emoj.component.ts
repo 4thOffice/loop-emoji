@@ -135,12 +135,12 @@ export class NgxEmojComponent implements OnInit {
 
     this.activeCategory = 'People';
     // get the emoji categories
-    this.emojiCategories = EMOJIS.slice(1).map((value) => {
+    this.emojiCategories = EMOJIS.map((value) => {
       return {name: value.name, icon: value.icon};
     });
 
     // filter to set defaults
-    this.activeEmojiSet = EMOJIS.slice(1).filter((category) => {
+    this.activeEmojiSet = EMOJIS.filter((category) => {
       if (category.name === this.activeCategory) {
             return category;
       }
