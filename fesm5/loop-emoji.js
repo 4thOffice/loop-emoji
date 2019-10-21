@@ -110,7 +110,7 @@ var EMOJIS = [
             ['😩', 'weary'],
             ['😤', 'triumph'],
             ['😠', 'angry'],
-            ['😡', 'rage'],
+            ['😡', 'rage, mad'],
             ['😶', 'no_mouth'],
             ['😐', 'neutral_face, :|'],
             ['😑', 'expressionless'],
@@ -124,7 +124,7 @@ var EMOJIS = [
             ['😱', 'scream'],
             ['😨', 'fearful'],
             ['😰', 'cold_sweat'],
-            ['😢', 'cry'],
+            ['😢', 'cry, sad'],
             ['😥', 'disappointed_relieved'],
             ['🤤', 'drooling_face'],
             ['😭', 'sob'],
@@ -141,7 +141,7 @@ var EMOJIS = [
             ['😷', 'mask'],
             ['🤒', 'face_with_thermometer'],
             ['🤕', 'face_with_head_bandage'],
-            ['😈', 'smiling_imp'],
+            ['😈', 'smiling_imp, devil'],
             ['👿', 'imp'],
             ['👹', 'japanese_ogre'],
             ['👺', 'japanese_goblin'],
@@ -167,7 +167,7 @@ var EMOJIS = [
             ['👏', 'clap'],
             ['🙏', 'pray'],
             ['🤝', 'handshake'],
-            ['👍', '+1'],
+            ['👍', '+1, thumbs_up'],
             ['👎', '-1'],
             ['👊', 'fist_oncoming'],
             ['✊', 'fist_raised'],
@@ -466,7 +466,7 @@ var EMOJIS = [
             ['🌱', 'seedling'],
             ['🌿', 'herb'],
             ['☘️', 'shamrock'],
-            ['🍀', 'four_leaf_clover'],
+            ['🍀', 'four_leaf_clover, luck'],
             ['🎍', 'bamboo'],
             ['🎋', 'tanabata_tree'],
             ['🍃', 'leaves'],
@@ -1052,7 +1052,7 @@ var EMOJIS = [
     {
         id: 8,
         emojis: [
-            ['❤️', 'heart'],
+            ['❤️', 'heart, love'],
             ['💛', 'yellow_heart'],
             ['💚', 'green_heart'],
             ['💙', 'blue_heart'],
@@ -1388,7 +1388,7 @@ var NgxEmojComponent = /** @class */ (function () {
         }
         this.activeCategory = 'People';
         // get the emoji categories
-        this.emojiCategories = EMOJIS.slice(1).map((/**
+        this.emojiCategories = EMOJIS.map((/**
          * @param {?} value
          * @return {?}
          */
@@ -1396,7 +1396,7 @@ var NgxEmojComponent = /** @class */ (function () {
             return { name: value.name, icon: value.icon };
         }));
         // filter to set defaults
-        this.activeEmojiSet = EMOJIS.slice(1).filter((/**
+        this.activeEmojiSet = EMOJIS.filter((/**
          * @param {?} category
          * @return {?}
          */
@@ -1964,7 +1964,7 @@ var NgxEmojCategoryContentComponent = /** @class */ (function () {
     NgxEmojCategoryContentComponent.decorators = [
         { type: Component, args: [{
                     selector: 'ngx-emoj-category-content',
-                    template: "\n    <div class=\"ngx-emoji-not-found\" *ngIf=\"activeIndex === 0 && notFound == true\"\n    [ngStyle]=\"{\n    'color': martEmojiNotFoundFG\n    }\">\n    {{ emojiNotFoundText }}\n    </div>\n  <div class=\"ngx-emoji-category-content\"\n       [ngStyle]=\"{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}\"\n       #emojiContainer>\n\n      <div class=\"emoji-btn-container\"\n        *ngFor=\"let emo of categoryEmojiSet\" [ngStyle]=\"{'height': emojiBtnPadding.y,\n                                                         'width': emojiBtnPadding.x   }\">\n          <button (click)=\"pickEmoji(emo)\" class=\"ngx-emoji-emoj-btn\"\n          [ngStyle]=\"{'font-size': emojiFontSize}\">\n      {{ emo[0] }}\n    </button>\n      </div>\n  </div>\n  ",
+                    template: "\n    <input [hidden]=\"activeIndex !== 0\"  type=\"text\" (keyup)=\"search($event)\" placeholder=\"{{ searchEmojiPlaceholderText }}\"\n        class=\"ngx-emoji-search\" [ngStyle]=\"{'color': searchBoxStyle.FGcolor,\n        'background': searchBoxStyle.BGcolor,\n        'border-radius': searchBoxStyle.borderRadius,\n        'border-color': searchBoxStyle.borderColor}\"/>\n    <div class=\"ngx-emoji-not-found\" *ngIf=\"activeIndex === 0 && notFound == true\"\n    [ngStyle]=\"{\n    'color': martEmojiNotFoundFG\n    }\">\n    {{ emojiNotFoundText }}\n    </div>\n  <div class=\"ngx-emoji-category-content\"\n       *ngIf=\"!notFound\"\n       [ngStyle]=\"{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}\"\n       #emojiContainer>\n\n      <div class=\"emoji-btn-container\"\n        *ngFor=\"let emo of categoryEmojiSet\" [ngStyle]=\"{'height': emojiBtnPadding.y,\n                                                         'width': emojiBtnPadding.x   }\">\n          <button (click)=\"pickEmoji(emo)\" class=\"ngx-emoji-emoj-btn\"\n          [ngStyle]=\"{'font-size': emojiFontSize}\">\n      {{ emo[0] }}\n    </button>\n      </div>\n  </div>\n  ",
                     styles: ["\n  .ngx-emoji-not-found\n  {\n    display: table;\n    margin: 60px auto;\n    font-size: 15px;\n    font-family: sans-serif;\n  }\n\n  .ngx-emoji-search\n  {\n    width: 87%;\n    display: table;\n    border: 1px solid;\n    padding: 5px 10px;\n    height: 30px;\n    font-family: sans-serif;\n    margin: 15px auto 10px auto;\n    outline: none;\n  }\n\n  .ngx-emoji-category-content\n  {\n    overflow-y: scroll;\n    width: 100% !important;\n    display: flex;\n    flex-wrap: wrap;\n    text-align: left;\n    align-content: flex-start;\n    justify-content: flex-start;\n  }\n\n  .emoji-btn-container\n  {\n    display: flex;\n    overflow: hidden;\n  }\n  .ngx-emoji-emoj-btn\n  {\n    background: transparent;\n    margin: auto;\n    border: none;\n    outline: none;\n    cursor: pointer;\n  }\n  "]
                 }] }
     ];

@@ -110,7 +110,7 @@ const EMOJIS = [
             ['😩', 'weary'],
             ['😤', 'triumph'],
             ['😠', 'angry'],
-            ['😡', 'rage'],
+            ['😡', 'rage, mad'],
             ['😶', 'no_mouth'],
             ['😐', 'neutral_face, :|'],
             ['😑', 'expressionless'],
@@ -124,7 +124,7 @@ const EMOJIS = [
             ['😱', 'scream'],
             ['😨', 'fearful'],
             ['😰', 'cold_sweat'],
-            ['😢', 'cry'],
+            ['😢', 'cry, sad'],
             ['😥', 'disappointed_relieved'],
             ['🤤', 'drooling_face'],
             ['😭', 'sob'],
@@ -141,7 +141,7 @@ const EMOJIS = [
             ['😷', 'mask'],
             ['🤒', 'face_with_thermometer'],
             ['🤕', 'face_with_head_bandage'],
-            ['😈', 'smiling_imp'],
+            ['😈', 'smiling_imp, devil'],
             ['👿', 'imp'],
             ['👹', 'japanese_ogre'],
             ['👺', 'japanese_goblin'],
@@ -167,7 +167,7 @@ const EMOJIS = [
             ['👏', 'clap'],
             ['🙏', 'pray'],
             ['🤝', 'handshake'],
-            ['👍', '+1'],
+            ['👍', '+1, thumbs_up'],
             ['👎', '-1'],
             ['👊', 'fist_oncoming'],
             ['✊', 'fist_raised'],
@@ -466,7 +466,7 @@ const EMOJIS = [
             ['🌱', 'seedling'],
             ['🌿', 'herb'],
             ['☘️', 'shamrock'],
-            ['🍀', 'four_leaf_clover'],
+            ['🍀', 'four_leaf_clover, luck'],
             ['🎍', 'bamboo'],
             ['🎋', 'tanabata_tree'],
             ['🍃', 'leaves'],
@@ -1052,7 +1052,7 @@ const EMOJIS = [
     {
         id: 8,
         emojis: [
-            ['❤️', 'heart'],
+            ['❤️', 'heart, love'],
             ['💛', 'yellow_heart'],
             ['💚', 'green_heart'],
             ['💙', 'blue_heart'],
@@ -1384,7 +1384,7 @@ class NgxEmojComponent {
         }
         this.activeCategory = 'People';
         // get the emoji categories
-        this.emojiCategories = EMOJIS.slice(1).map((/**
+        this.emojiCategories = EMOJIS.map((/**
          * @param {?} value
          * @return {?}
          */
@@ -1392,7 +1392,7 @@ class NgxEmojComponent {
             return { name: value.name, icon: value.icon };
         }));
         // filter to set defaults
-        this.activeEmojiSet = EMOJIS.slice(1).filter((/**
+        this.activeEmojiSet = EMOJIS.filter((/**
          * @param {?} category
          * @return {?}
          */
@@ -2118,6 +2118,11 @@ NgxEmojCategoryContentComponent.decorators = [
     { type: Component, args: [{
                 selector: 'ngx-emoj-category-content',
                 template: `
+    <input [hidden]="activeIndex !== 0"  type="text" (keyup)="search($event)" placeholder="{{ searchEmojiPlaceholderText }}"
+        class="ngx-emoji-search" [ngStyle]="{'color': searchBoxStyle.FGcolor,
+        'background': searchBoxStyle.BGcolor,
+        'border-radius': searchBoxStyle.borderRadius,
+        'border-color': searchBoxStyle.borderColor}"/>
     <div class="ngx-emoji-not-found" *ngIf="activeIndex === 0 && notFound == true"
     [ngStyle]="{
     'color': martEmojiNotFoundFG
@@ -2125,6 +2130,7 @@ NgxEmojCategoryContentComponent.decorators = [
     {{ emojiNotFoundText }}
     </div>
   <div class="ngx-emoji-category-content"
+       *ngIf="!notFound"
        [ngStyle]="{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}"
        #emojiContainer>
 
