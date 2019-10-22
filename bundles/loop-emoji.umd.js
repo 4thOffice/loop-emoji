@@ -1886,7 +1886,8 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var NgxEmojCategoryContentComponent = /** @class */ (function () {
-        function NgxEmojCategoryContentComponent() {
+        function NgxEmojCategoryContentComponent(rd) {
+            this.rd = rd;
             this.onpickemoji = new core.EventEmitter;
             this.oncontentscroll = new core.EventEmitter;
             this.oncontentSwipe = new core.EventEmitter;
@@ -1895,6 +1896,17 @@
             this.initialEmoj = false;
             this.notFound = false;
         }
+        /**
+         * @return {?}
+         */
+        NgxEmojCategoryContentComponent.prototype.ngOnChanges = /**
+         * @return {?}
+         */
+            function () {
+                if (this.activeIndex === 0) {
+                    this.focusSearch();
+                }
+            };
         /**
          * @param {?} e
          * @return {?}
@@ -1950,15 +1962,39 @@
                     emoji: emoji
                 });
             };
+        /**
+         * @private
+         * @return {?}
+         */
+        NgxEmojCategoryContentComponent.prototype.focusSearch = /**
+         * @private
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var element = this.rd.selectRootElement('.ngx-emoji-search');
+                this.searchInput.nativeElement.value = '';
+                this.initialEmoj = false;
+                this.notFound = false;
+                setTimeout(( /**
+                 * @return {?}
+                 */function () {
+                    element.focus();
+                }), 0);
+            };
         NgxEmojCategoryContentComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'ngx-emoj-category-content',
-                        template: "\n    <input [hidden]=\"activeIndex !== 0\"  type=\"text\" (keyup)=\"search($event)\" placeholder=\"{{ searchEmojiPlaceholderText }}\"\n        class=\"ngx-emoji-search\" [ngStyle]=\"{'color': searchBoxStyle.FGcolor,\n        'background': searchBoxStyle.BGcolor,\n        'border-radius': searchBoxStyle.borderRadius,\n        'border-color': searchBoxStyle.borderColor}\"/>\n    <div class=\"ngx-emoji-not-found\" *ngIf=\"activeIndex === 0 && notFound == true\"\n    [ngStyle]=\"{\n    'color': martEmojiNotFoundFG\n    }\">\n    {{ emojiNotFoundText }}\n    </div>\n  <div class=\"ngx-emoji-category-content\"\n       *ngIf=\"!notFound\"\n       [ngStyle]=\"{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}\"\n       #emojiContainer>\n\n      <div class=\"emoji-btn-container\"\n        *ngFor=\"let emo of categoryEmojiSet\" [ngStyle]=\"{'height': emojiBtnPadding.y,\n                                                         'width': emojiBtnPadding.x   }\">\n          <button (click)=\"pickEmoji(emo)\" class=\"ngx-emoji-emoj-btn\"\n          [ngStyle]=\"{'font-size': emojiFontSize}\">\n      {{ emo[0] }}\n    </button>\n      </div>\n  </div>\n  ",
+                        template: "\n    <input [hidden]=\"activeIndex !== 0\"  type=\"text\" (keyup)=\"search($event)\" placeholder=\"{{ searchEmojiPlaceholderText }}\"\n        class=\"ngx-emoji-search\" [ngStyle]=\"{'color': searchBoxStyle.FGcolor,\n        'background': searchBoxStyle.BGcolor,\n        'border-radius': searchBoxStyle.borderRadius,\n        'border-color': searchBoxStyle.borderColor}\"\n        #searchInput/>\n    <div class=\"ngx-emoji-not-found\" *ngIf=\"activeIndex === 0 && notFound == true\"\n    [ngStyle]=\"{\n    'color': martEmojiNotFoundFG\n    }\">\n    {{ emojiNotFoundText }}\n    </div>\n  <div class=\"ngx-emoji-category-content\"\n       *ngIf=\"!notFound\"\n       [ngStyle]=\"{'padding': '0px 5px 5px ' + martEmojiContentPaddingLeft, 'height': activeIndex === 0? '70%':'85%'}\"\n       #emojiContainer>\n\n      <div class=\"emoji-btn-container\"\n        *ngFor=\"let emo of categoryEmojiSet\" [ngStyle]=\"{'height': emojiBtnPadding.y,\n                                                         'width': emojiBtnPadding.x   }\">\n          <button (click)=\"pickEmoji(emo)\" class=\"ngx-emoji-emoj-btn\"\n          [ngStyle]=\"{'font-size': emojiFontSize}\">\n      {{ emo[0] }}\n    </button>\n      </div>\n  </div>\n  ",
                         styles: ["\n  .ngx-emoji-not-found\n  {\n    display: table;\n    margin: 60px auto;\n    font-size: 15px;\n    font-family: sans-serif;\n  }\n\n  .ngx-emoji-search\n  {\n    width: 87%;\n    display: table;\n    border: 1px solid;\n    padding: 5px 10px;\n    height: 30px;\n    font-family: sans-serif;\n    margin: 15px auto 10px auto;\n    outline: none;\n  }\n\n  .ngx-emoji-category-content\n  {\n    overflow-y: scroll;\n    width: 100% !important;\n    display: flex;\n    flex-wrap: wrap;\n    text-align: left;\n    align-content: flex-start;\n    justify-content: flex-start;\n  }\n\n  .emoji-btn-container\n  {\n    display: flex;\n    overflow: hidden;\n  }\n  .ngx-emoji-emoj-btn\n  {\n    background: transparent;\n    margin: auto;\n    border: none;\n    outline: none;\n    cursor: pointer;\n  }\n  "]
                     }] }
         ];
         /** @nocollapse */
-        NgxEmojCategoryContentComponent.ctorParameters = function () { return []; };
+        NgxEmojCategoryContentComponent.ctorParameters = function () {
+            return [
+                { type: core.Renderer2 }
+            ];
+        };
         NgxEmojCategoryContentComponent.propDecorators = {
             categoryName: [{ type: core.Input }],
             categoryEmojiSet: [{ type: core.Input }],
@@ -1973,7 +2009,8 @@
             onpickemoji: [{ type: core.Output }],
             oncontentscroll: [{ type: core.Output }],
             oncontentSwipe: [{ type: core.Output }],
-            emojiContainer: [{ type: core.ViewChild, args: ['emojiContainer',] }]
+            emojiContainer: [{ type: core.ViewChild, args: ['emojiContainer',] }],
+            searchInput: [{ type: core.ViewChild, args: ['searchInput',] }]
         };
         return NgxEmojCategoryContentComponent;
     }());

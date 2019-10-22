@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, NgModule } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, Renderer2, NgModule } from '@angular/core';
 
 /**
  * @fileoverview added by tsickle
@@ -2056,7 +2056,11 @@ NgxEmojCategoryComponent.propDecorators = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class NgxEmojCategoryContentComponent {
-    constructor() {
+    /**
+     * @param {?} rd
+     */
+    constructor(rd) {
+        this.rd = rd;
         this.onpickemoji = new EventEmitter;
         this.oncontentscroll = new EventEmitter;
         this.oncontentSwipe = new EventEmitter;
@@ -2064,6 +2068,14 @@ class NgxEmojCategoryContentComponent {
         this.recentEmosForSearch = [];
         this.initialEmoj = false;
         this.notFound = false;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnChanges() {
+        if (this.activeIndex === 0) {
+            this.focusSearch();
+        }
     }
     /**
      * @param {?} e
@@ -2113,6 +2125,23 @@ class NgxEmojCategoryContentComponent {
             emoji: emoji
         });
     }
+    /**
+     * @private
+     * @return {?}
+     */
+    focusSearch() {
+        /** @type {?} */
+        const element = this.rd.selectRootElement('.ngx-emoji-search');
+        this.searchInput.nativeElement.value = '';
+        this.initialEmoj = false;
+        this.notFound = false;
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            element.focus();
+        }), 0);
+    }
 }
 NgxEmojCategoryContentComponent.decorators = [
     { type: Component, args: [{
@@ -2122,7 +2151,8 @@ NgxEmojCategoryContentComponent.decorators = [
         class="ngx-emoji-search" [ngStyle]="{'color': searchBoxStyle.FGcolor,
         'background': searchBoxStyle.BGcolor,
         'border-radius': searchBoxStyle.borderRadius,
-        'border-color': searchBoxStyle.borderColor}"/>
+        'border-color': searchBoxStyle.borderColor}"
+        #searchInput/>
     <div class="ngx-emoji-not-found" *ngIf="activeIndex === 0 && notFound == true"
     [ngStyle]="{
     'color': martEmojiNotFoundFG
@@ -2193,7 +2223,9 @@ NgxEmojCategoryContentComponent.decorators = [
             }] }
 ];
 /** @nocollapse */
-NgxEmojCategoryContentComponent.ctorParameters = () => [];
+NgxEmojCategoryContentComponent.ctorParameters = () => [
+    { type: Renderer2 }
+];
 NgxEmojCategoryContentComponent.propDecorators = {
     categoryName: [{ type: Input }],
     categoryEmojiSet: [{ type: Input }],
@@ -2208,7 +2240,8 @@ NgxEmojCategoryContentComponent.propDecorators = {
     onpickemoji: [{ type: Output }],
     oncontentscroll: [{ type: Output }],
     oncontentSwipe: [{ type: Output }],
-    emojiContainer: [{ type: ViewChild, args: ['emojiContainer',] }]
+    emojiContainer: [{ type: ViewChild, args: ['emojiContainer',] }],
+    searchInput: [{ type: ViewChild, args: ['searchInput',] }]
 };
 
 /**

@@ -1,5 +1,6 @@
-import { EventEmitter, ElementRef } from '@angular/core';
-export declare class NgxEmojCategoryContentComponent {
+import { EventEmitter, ElementRef, OnChanges, Renderer2 } from '@angular/core';
+export declare class NgxEmojCategoryContentComponent implements OnChanges {
+    private rd;
     categoryName: string;
     categoryEmojiSet: any;
     activeIndex: number;
@@ -15,10 +16,14 @@ export declare class NgxEmojCategoryContentComponent {
     oncontentSwipe: any;
     notFound: boolean;
     initialEmoj: boolean;
+    searchValue: string;
     emojiContainer: ElementRef;
+    searchInput: ElementRef;
     searchSet: any;
     recentEmosForSearch: any;
-    constructor();
+    constructor(rd: Renderer2);
+    ngOnChanges(): void;
     search(e: any): void;
     pickEmoji(emoji: any): void;
+    private focusSearch;
 }
