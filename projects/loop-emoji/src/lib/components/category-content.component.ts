@@ -5,6 +5,8 @@ import {
     EventEmitter,
     ElementRef,
     ViewChild,
+    OnChanges,
+    Renderer2
 } from '@angular/core';
 import {
     EMOJIS
@@ -17,7 +19,8 @@ import {
         class="ngx-emoji-search" [ngStyle]="{'color': searchBoxStyle.FGcolor,
         'background': searchBoxStyle.BGcolor,
         'border-radius': searchBoxStyle.borderRadius,
-        'border-color': searchBoxStyle.borderColor}"/>
+        'border-color': searchBoxStyle.borderColor}"
+        #searchInput/>
     <div class="ngx-emoji-not-found" *ngIf="activeIndex === 0 && notFound == true"
     [ngStyle]="{
     'color': martEmojiNotFoundFG
@@ -86,7 +89,7 @@ import {
   }
   `]
 })
-export class NgxEmojCategoryContentComponent {
+export class NgxEmojCategoryContentComponent implements OnChanges {
 
     @Input() categoryName: string;
     @Input() categoryEmojiSet: any;
@@ -105,15 +108,23 @@ export class NgxEmojCategoryContentComponent {
 
     notFound: boolean;
     initialEmoj: boolean;
+    searchValue: string;
 
     @ViewChild('emojiContainer') emojiContainer: ElementRef;
+    @ViewChild('searchInput') searchInput: ElementRef;
 
     searchSet: any = [];
     recentEmosForSearch: any = [];
 
-    constructor() {
+    constructor(private rd: Renderer2) {
         this.initialEmoj = false;
         this.notFound = false;
+    }
+
+    ngOnChanges() {
+        if (this.activeIndex === 0) {
+            this.focusSearch();
+        }
     }
 
     search(e) {
@@ -150,5 +161,16 @@ export class NgxEmojCategoryContentComponent {
         this.onpickemoji.emit({
             emoji: emoji
         });
+    }
+
+    private focusSearch() {
+        const element = this.rd.selectRootElement('.ngx-emoji-search');
+        this.searchInput.nativeElement.value = '';
+        this.initialEmoj = false;
+        this.notFound = false;
+
+        setTimeout(() => {
+            element.focus();
+        }, 0);
     }
 }
