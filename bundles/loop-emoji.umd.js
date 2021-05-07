@@ -277,6 +277,8 @@
                 /*['🙆‍♂', 'ok_man'],*/
                 ['🙋', 'raising_hand_woman'],
                 /*['🙋‍♂', 'raising_hand_man'],*/
+                ['🤦', 'person_facepalming'],
+                ['🤷', 'person_shrugging'],
                 /*['🤦‍♀', 'woman_facepalming'],*/
                 /*['🤦‍♂', 'man_facepalming'],*/
                 /*['🤷‍♀', 'woman_shrugging'],*/
