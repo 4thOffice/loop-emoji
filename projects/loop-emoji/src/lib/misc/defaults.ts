@@ -33,7 +33,8 @@ const DEFAULTS: any = {
       borderColor: '#ccc',
       placeHolderColor: '#777',
       borderRadius: '30px',
-    }
+    },
+    martDefaultActiveCategory: 'People'
 };
 
 export default DEFAULTS;

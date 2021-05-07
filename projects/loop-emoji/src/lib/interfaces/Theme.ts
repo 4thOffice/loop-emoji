@@ -32,4 +32,5 @@ export default interface Theme {
       placeHolderColor?: string,
       borderRadius?: string
     };
+    martDefaultActiveCategory?: string;
 }
