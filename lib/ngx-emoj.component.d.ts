@@ -23,6 +23,7 @@ export declare class NgxEmojComponent implements OnInit {
     constructor();
     ngOnInit(): void;
     handleCategoryChange(e: any): void;
+    updateEmojiSet(): void;
     handleEmoChange(e: any): void;
     checkIfEmojiExistsInEmojiDB(name: any): boolean;
     addEmojiToRecentEmojiDB(emoji: string[]): void;

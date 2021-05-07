@@ -42,7 +42,8 @@ const DEFAULTS = {
         borderColor: '#ccc',
         placeHolderColor: '#777',
         borderRadius: '30px',
-    }
+    },
+    martDefaultActiveCategory: 'People'
 };
 
 /**
@@ -1382,7 +1383,10 @@ class NgxEmojComponent {
             this.emojiDB = [];
             window.localStorage.setItem(this.emojiDBKey, JSON.stringify(this.emojiDB));
         }
-        this.activeCategory = 'People';
+        this.activeCategory = this.theme.martDefaultActiveCategory || DEFAULTS.martDefaultActiveCategory;
+        if (this.theme.martDefaultActiveCategory === 'Recent' && this.emojiDB.length < 5) {
+            this.activeCategory = DEFAULTS.martDefaultActiveCategory;
+        }
         // get the emoji categories
         this.emojiCategories = EMOJIS.map((/**
          * @param {?} value
@@ -1401,9 +1405,7 @@ class NgxEmojComponent {
                 return category;
             }
         }));
-        this.activeIndex = this.activeEmojiSet[0].id;
-        // console.log('Initial Emo Index:', this.activeIndex);
-        this.activeEmojiSet = this.activeEmojiSet[0].emojis;
+        this.updateEmojiSet();
         this.activeEmo = 'Emoji';
         // collate the emos type
         this.emos = EMOS.map((/**
@@ -1421,12 +1423,18 @@ class NgxEmojComponent {
     handleCategoryChange(e) {
         // set active category name...
         this.activeCategory = e.name;
-        if (e.name === 'Recent') {
+        this.updateEmojiSet();
+    }
+    /**
+     * @return {?}
+     */
+    updateEmojiSet() {
+        if (this.activeCategory === 'Recent') {
             // If recent category, set emoji to emojis in the recent store...
             this.activeIndex = EMOJIS[1].id;
             this.activeEmojiSet = this.emojiDB;
         }
-        else if (e.name === 'Search') {
+        else if (this.activeCategory === 'Search') {
             this.activeIndex = EMOJIS[0].id;
             this.activeEmojiSet = this.emojiDB.concat(EMOJIS[2].emojis);
         }
@@ -1621,7 +1629,7 @@ NgxEmojComponent.decorators = [
         [headerFG]="(theme.martHeaderFG || DEFAULTS.martHeaderFG)"
         [headerFontSize]="(theme.martHeaderFontSize || DEFAULTS.martHeaderFontSize)"
         [headerPadding]="(theme.martHeaderPadding || DEFAULTS.martHeaderPadding)"
-        [defaultActiveCategory]="'People'"
+        [defaultActiveCategory]="(theme.martDefaultActiveCategory || DEFAULTS.martDefaultActiveCategory)"
         [activeCategory]="activeCategory"
         (oncategorychange)="handleCategoryChange($event)"
         [martCategoryFontSize]="(theme.martCategoryFontSize || DEFAULTS.martCategoryFontSize)"
