@@ -23,12 +23,10 @@
     "url": "https://github.com/ahkohd/ngx-emoj.git"
   },
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
+    "tslib": "^1.9.0",
     "@angular/common": "4.4.6",
     "@angular/core": "4.4.6"
-  },
-  "dependencies": {
-    "tslib": "^1.9.0"
   },
   "main": "bundles/loop-emoji.umd.js",
   "module": "fesm5/loop-emoji.js",
